@@ -1,7 +1,5 @@
 package com.lyn.codeLearing.Recursion;
 
-import com.lyn.utils.FileUtils;
-
 import java.io.File;
 
 /**
@@ -31,6 +29,6 @@ public class Fab {
 //        System.out.println(compute(5));
 
         File file =new File("d:\\dd");
-        FileUtils.deleteAllFiles(file);
+//        FileUtils.deleteAllFiles(file);
     }
 }
