@@ -19,13 +19,14 @@ public class BinarySearch {
         int high=arrs.length-1;
         int middle;
 
-        while(low<high){
-            middle=(high-low)/2;
+        while(low<=high){
+
+            middle=(high+low)/2;
             if(arrs[middle]==find){
                 return middle;
             }
             if(arrs[middle]>find){
-                high=middle;
+                high=middle-1;
             }
             if(arrs[middle]<find){
                 low=middle+1;
@@ -36,9 +37,9 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        int find=50;
+        int find=12;
 
-        int[] a={11, 1, 5, 9, 3, 6, 99, 22, 55};
+        int[] a={1, 3, 5, 6, 9, 11, 22, 55, 99};
         //先排序
         InsertSort.sort(a);
 
