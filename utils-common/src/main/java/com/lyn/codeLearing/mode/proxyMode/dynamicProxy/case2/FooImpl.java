@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.proxyMode.dynamicProxy.case2;
+package com.lyn.codeLearing.mode.proxyMode.dynamicProxy.case2;
 
 public class FooImpl implements Foo {
     @Override

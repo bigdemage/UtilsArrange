@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.proxyMode.staticProxy;
+package com.lyn.codeLearing.mode.proxyMode.staticProxy;
 
 public class ProxySubject extends Subject{
     //代理对象要有真实对象的引用

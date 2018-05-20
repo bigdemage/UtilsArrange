@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.proxyMode.dynamicProxy.case1;
+package com.lyn.codeLearing.mode.proxyMode.dynamicProxy.case1;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;

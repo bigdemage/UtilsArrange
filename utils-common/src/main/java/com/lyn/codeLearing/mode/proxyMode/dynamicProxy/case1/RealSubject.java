@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.proxyMode.dynamicProxy.case1;
+package com.lyn.codeLearing.mode.proxyMode.dynamicProxy.case1;
 
 public class RealSubject implements Subject {
     @Override

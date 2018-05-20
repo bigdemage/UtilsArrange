@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.strategyMode;
+package com.lyn.codeLearing.mode.strategyMode;
 
 
 /**

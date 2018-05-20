@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.proxyMode.staticProxy;
+package com.lyn.codeLearing.mode.proxyMode.staticProxy;
 
 public class Client {
 
