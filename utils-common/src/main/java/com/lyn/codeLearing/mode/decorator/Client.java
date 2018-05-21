@@ -8,7 +8,7 @@ public class Client {
         //节点流
         Component component =new ConcreteComponent();
         //过滤流
-        Component component2 =new ConcreteDecorater1();
+        Component component2 =new ConcreteDecorater1(component);
 
 
         Component component3 =new ConcreteDecorater2(component);
