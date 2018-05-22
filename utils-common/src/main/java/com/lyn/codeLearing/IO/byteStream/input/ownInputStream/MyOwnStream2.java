@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.IO.Stream.input.ownInputStream;
+package com.lyn.codeLearing.IO.byteStream.input.ownInputStream;
 
 
 import java.io.IOException;

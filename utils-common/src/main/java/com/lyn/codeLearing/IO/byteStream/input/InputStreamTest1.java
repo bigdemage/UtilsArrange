@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.IO.Stream.input;
+package com.lyn.codeLearing.IO.byteStream.input;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
