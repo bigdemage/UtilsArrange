@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.IO.linshi;
+package com.lyn.codeLearing.IO.characterStream.output;
 
 import java.io.FileWriter;
 import java.io.IOException;

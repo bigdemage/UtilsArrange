@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.IO.linshi;
+package com.lyn.codeLearing.IO.characterStream.input;
 
 
 import java.io.CharArrayReader;
