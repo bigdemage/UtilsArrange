@@ -24,5 +24,6 @@ public class InputStreamTest1 {
         }
 
         inputStream.close();
+
     }
 }
