@@ -1,5 +1,9 @@
 package com.lyn.codeLearing.thread;
 
+
+/**
+ * synchronized 同步
+ */
 public class ThreadTest3 {
 
 
