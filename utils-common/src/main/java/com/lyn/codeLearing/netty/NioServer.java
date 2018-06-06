@@ -12,7 +12,7 @@ import java.util.Iterator;
 /**
  * NIO服务端
  *
- * @author -琴兽-
+ * @author -龙宿-
  */
 public class NioServer {
     // 通道管理器
