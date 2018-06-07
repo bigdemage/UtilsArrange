@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.netty.case2Version4x.server;
+package com.lyn.codeLearing.netty.case2Version5x.server;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerAdapter;
@@ -15,13 +15,15 @@ import io.netty.util.ReferenceCountUtil;
 public class DiscardServerHandler extends ChannelHandlerAdapter {
 
 
+
+
     /**
      * 收到信息时被调用的方法，用于读取
      * @param ctx  通道处理的上下文
      * @param msg  接受到的消息
      * @throws Exception
      */
-    @Override
+//    @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf in = (ByteBuf) msg;
         //打印传过来的字符
@@ -45,7 +47,7 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
         /**
          * exceptionCaught事件处理方法是当出现Throwable对象才会调用
          * 当netty由于io错误或者处理器在处理事件时抛出异常，在大部分情况下，捕获的异常应该被记录下来，并且把关联的channel关闭掉
-         * 然而这个方法的处理方式会在遇到不同异常情况下有不同的实现，比如可能在关闭连接之前发送一个错误码的响应信息，出现异常就关闭
+         * 然而这个方法的处理方式会在遇到不同异常情况下有不同的实现，比如可能在关闭连接之前发送一个错误码的响应信息，出现异常就
          */
         //打印异常信息
         cause.printStackTrace();
