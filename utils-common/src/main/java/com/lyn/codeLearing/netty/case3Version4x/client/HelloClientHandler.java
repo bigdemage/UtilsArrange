@@ -23,4 +23,6 @@ public class HelloClientHandler extends SimpleChannelInboundHandler<String>{
         System.out.println("Client close");
         super.channelInactive(ctx);
     }
+
+
 }

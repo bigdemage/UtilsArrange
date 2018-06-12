@@ -6,7 +6,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import java.net.InetAddress;
 
 /**
- * 控制过滤器
+ * 代码逻辑
  * SimpleChannelInboundHandler是官网推荐的
  *
  */
@@ -31,16 +31,30 @@ public class HelloServerHandler extends SimpleChannelInboundHandler<String> {
     /**
      * 覆盖channelActive方法，在channel被调用的时候触发(建立连接的时候)
      * 当连接活跃（建立）的时候触发
+     * 当一个新的连接建立时触发
      *
      * @param ctx
      * @throws Exception
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("RemoteAddress:"+ctx.channel().remoteAddress()+"active!!!");
+        System.out.println("RemoteAddress:"+ctx.channel().remoteAddress()+"   active!!!");
 
         ctx.writeAndFlush("Welcome to "+ InetAddress.getLocalHost().getHostName()+" service! \n");
 
         super.channelActive(ctx);
+    }
+
+    /**
+     * 异常时被调用
+     * @param ctx
+     * @param cause
+     * @throws Exception
+     */
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        System.out.println("Netty服务异常:");
+        cause.printStackTrace();
+        super.exceptionCaught(ctx, cause);
     }
 }
