@@ -1,4 +1,4 @@
-package com.lyn.codeLearing.atomic;
+package com.lyn.codeLearing.thread.atomic;
 
 public class AtomicStampedReferenceTest {
 }
