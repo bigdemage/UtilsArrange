@@ -1,6 +1,7 @@
 package com.lyn.codeLearing.thread;
 
 import ch.qos.logback.core.util.TimeUtil;
+import org.apache.commons.lang3.RandomUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -40,6 +41,8 @@ public class ThreadTestJoin2 {
 
         System.out.println(thread1.isAlive());
         System.out.println(config);
+
+        System.out.println(RandomUtils.nextInt(100,200));
 
     }
 
