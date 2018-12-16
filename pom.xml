@@ -18,6 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <arch.version>5.0.1-SNAPSHOT</arch.version>
     </properties>
 
 
@@ -87,6 +88,12 @@
             <artifactId>commons-codec</artifactId>
             <version>1.9</version>
         </dependency>
+        <dependency>
+            <groupId>com.hengtianjf.parent</groupId>
+            <artifactId>basic.arch.tools.utils</artifactId>
+            <version>${arch.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

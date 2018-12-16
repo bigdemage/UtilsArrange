@@ -8,6 +8,9 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -566,4 +569,20 @@ public class DateUtils {
 		calendar.set(Calendar.MILLISECOND, 0);
 		return calendar.getTime();
 	}
+
+	/**
+	 * 计算当前多少岁
+	 * @param birthDay
+	 * String转LocalDate：LocalDate.parse("1989-10-04", DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+	 * @return
+	 */
+	public static int getAgeForDate(LocalDate birthDay){
+		int age=0;
+		if(birthDay!=null){
+			LocalDate now = LocalDate.now();//当前时间
+			age=birthDay.until(now).getYears();//计算年份
+		}
+		return age;
+	}
+
 }

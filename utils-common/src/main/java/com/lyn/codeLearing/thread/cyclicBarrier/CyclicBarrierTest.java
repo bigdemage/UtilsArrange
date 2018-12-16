@@ -24,7 +24,7 @@ public class CyclicBarrierTest {
 
     public static void main(String[] args) {
         for(int i =0;i<THREAD_COUNT;i++){
-            new Thread(String.valueOf(i)){
+            new Thread("巴巴爸爸"+i+"号"){
                 public void run() {
                     try {
                         System.out.println("im thread:" + this.getName() + " 开机，耍起！");
