@@ -1,4 +1,4 @@
-package com.lyn.utils;
+package common.utils;
 
 import com.alibaba.fastjson.JSONObject;
 

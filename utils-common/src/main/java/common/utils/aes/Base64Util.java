@@ -1,4 +1,4 @@
-package com.lyn.utils.aes;
+package common.utils.aes;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.encoders.Base64;
