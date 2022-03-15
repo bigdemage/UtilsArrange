@@ -17,7 +17,6 @@ public class CollectMap {
 
 
 
-
         Map<String, List<A>> map =list.stream().peek(System.out::println).collect(Collectors.groupingBy(A::getName));
 
         System.out.println(map);

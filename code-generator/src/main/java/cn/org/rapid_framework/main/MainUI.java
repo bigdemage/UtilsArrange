@@ -27,7 +27,7 @@ public class MainUI {
         /***
          * generateByTable 传入* 则生成所有表
          */
-        String[] tables = {"t_userinfo"};
+        String[] tables = {"t_user_track_record"};
         generatorFacade.generateByTable(tables);
       //g.generateByAllTable(); 生成所有表
     }

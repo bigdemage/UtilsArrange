@@ -12,34 +12,31 @@ import java.util.List;
  */
 public class Java8Base64 {
 
-    private List< String>  getList(){
-        return null;
-    }
 
     public static void main(String[] args) throws UnsupportedEncodingException {
 
 
-        
+//        jiami(str);
 
+        String jiemihou =jiemi("rBCjQmA9l8yAJKCHAAEd2WT");
 
+        System.out.println(jiemihou);
+
+    }
+
+    private static String jiemi(String str) {
+
+        return new String(Base64.getDecoder().decode(str),StandardCharsets.UTF_8);
+
+    }
+
+    private static String jiami(String str) {
         //获取encoder对象
         Base64.Encoder encoder =Base64.getEncoder();
 
-        String password ="alibaba";
 
-        String encoderStr=encoder.encodeToString(password.getBytes(StandardCharsets.UTF_8));
+        String encoderStr=encoder.encodeToString(str.getBytes(StandardCharsets.UTF_8));
 
-        System.out.println(encoderStr);
-
-        //以上是加密
-        //以下是解密
-
-        Base64.Decoder decoder =Base64.getDecoder();
-
-        byte[] decoderByte =decoder.decode(encoderStr);
-
-        System.out.println(new String(decoderByte,StandardCharsets.UTF_8));
-
-
+        return encoderStr;
     }
 }
