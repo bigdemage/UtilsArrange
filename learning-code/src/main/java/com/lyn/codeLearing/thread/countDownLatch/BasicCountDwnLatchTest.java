@@ -17,6 +17,7 @@ public class BasicCountDwnLatchTest {
 
         for(int i=0;i<GROUP_SIZE;i++){
             new Thread(String.valueOf(i)){
+                @Override
                 public void run() {
                     try {
                         startCountDown.await();//等待主线程执行完毕，获得开始执行信号
