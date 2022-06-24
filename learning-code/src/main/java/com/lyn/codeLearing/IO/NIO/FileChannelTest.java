@@ -17,7 +17,7 @@ import java.nio.channels.FileChannel;
 @Slf4j
 public class FileChannelTest {
 
-    private static final String FILE_NAME="SensitiveWord.txt";
+    private static final String FILE_NAME="串讲-Scala第一次串讲.mp4";
 
     private static final int[] types={0,1,2,3};
 
@@ -30,6 +30,7 @@ public class FileChannelTest {
     public static void main(String[] args) throws Exception {
         String filePath=FileChannelTest.class.getResource("/").getPath()+FILE_NAME;
         File file=new File(filePath);
+        long start = System.currentTimeMillis();
         if(file.exists()){
             log.info("开始操作文件");
             //读入流
@@ -37,17 +38,18 @@ public class FileChannelTest {
             //输入流的管道
             FileChannel fileInChannel=fileInputStream.getChannel();
             //输出流
-            FileOutputStream fileOutputStream=new FileOutputStream(new File("dangdang.txt"));
+            FileOutputStream fileOutputStream=new FileOutputStream(new File("kashi.mp4"));
             //输出流的管道
             FileChannel fileOutChannel=fileOutputStream.getChannel();
             //创建缓冲区，channel只是负责搬运，搬运的东西放在缓冲区中
-            ByteBuffer byteBuffer =ByteBuffer.allocate((int) file.length());
+            ByteBuffer byteBuffer =ByteBuffer.allocate(500*1024*1024);
             //操作的类型
-            writeTxt(types[1],fileInChannel,fileOutChannel,byteBuffer);
+            writeTxt(types[2],fileInChannel,fileOutChannel,byteBuffer);
             //优雅关闭
             graceClose(fileInChannel,fileInputStream,fileOutChannel,fileOutputStream);
             log.info("文件操作完成");
         }
+        log.info("花费：{}ms",(System.currentTimeMillis()-start));
 
 
     }

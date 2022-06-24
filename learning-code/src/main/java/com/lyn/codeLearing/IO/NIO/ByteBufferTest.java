@@ -21,6 +21,8 @@ public class ByteBufferTest {
          * 初始化ByteBuffer缓冲区，设置大小
          * Buffer三个初始化属性，position位置，limit提交/限制，capacity容量
          * 默认是0，size，size
+         * 非直接缓冲区allocate  物理磁盘--->物理内存--->jvm空间--->应用程序
+         * 直接缓冲区allocateDirect使用堆外内存  物理磁盘--->物理内存映射文件--->应用程序
          */
         ByteBuffer byteBuffer=ByteBuffer.allocate(1024);
         //String转byte数组
