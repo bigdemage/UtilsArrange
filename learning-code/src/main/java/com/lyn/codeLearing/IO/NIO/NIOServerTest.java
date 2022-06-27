@@ -31,7 +31,7 @@ public class NIOServerTest {
         InetSocketAddress inetSocketAddress=new InetSocketAddress("127.0.0.1",6666);
         //绑定地址
         serverSocketChannel.bind(inetSocketAddress);
-        //设置非阻塞
+        //设置非阻塞，channel要注册到selector中，一定要是非阻塞
         serverSocketChannel.configureBlocking(false);
         //创建selector选择器
         Selector selector=Selector.open();

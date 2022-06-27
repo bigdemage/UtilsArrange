@@ -24,6 +24,7 @@ public class FileChannelTest {
     /**
      * FileChannel流程，fileinputStream->fileChannel->byteBuffer->fileoutchannel->fileoutputSteam
      * 流是没有办法在channel内直接传输，需要拿到流里的管道，数据放到缓存区中，由管道输送
+     * fileChannel是阻塞的没法注册到selector上
      * @param args
      * @throws Exception
      */
