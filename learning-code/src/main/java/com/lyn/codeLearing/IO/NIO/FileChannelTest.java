@@ -2,7 +2,10 @@ package com.lyn.codeLearing.IO.NIO;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
@@ -64,7 +67,7 @@ public class FileChannelTest {
     }
 
     /**
-     * 读写文件的三种方式
+     * 读写文件的三种方式,使用transfer更高效
      * 1、读到inchannel中的缓冲区，写入到outchannel中的缓冲区
      * 2、transferTo()，把源通道数据传到目标通道中
      * 3、transferFrom()，目标通道去读取源通道的数据

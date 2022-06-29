@@ -35,6 +35,7 @@ public class ByteBufferTest {
         /**
          * 切换读模式，byteBuffer有读和写两种模式，操作只能用一种模式，所以需要切换
          * 调用flip()后，position置0，limit置成之前postion的长度
+         * 怎么从读模式切换成写模式，用clear()清空和compact()压缩方法将缓冲区转换成写模式
          */
         byteBuffer.flip();
         //创建临时数组

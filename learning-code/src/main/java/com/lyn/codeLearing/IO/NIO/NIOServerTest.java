@@ -35,7 +35,7 @@ public class NIOServerTest {
         serverSocketChannel.configureBlocking(false);
         //创建selector选择器
         Selector selector=Selector.open();
-        //serverSocketChannel注册到选择器中,选择一个监听的事件,有accept，connetion，read，write
+        //serverSocketChannel注册到选择器中,选择一个监听的事件,有accept，connetion，read，write,serversocketchannel只支持accept
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
         //循环等待客户端连接
         while(true){
