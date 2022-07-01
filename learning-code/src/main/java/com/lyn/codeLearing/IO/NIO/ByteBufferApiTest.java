@@ -1,6 +1,7 @@
 package com.lyn.codeLearing.IO.NIO;
 
 import io.netty.util.CharsetUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.CharSetUtils;
 
 import java.nio.ByteBuffer;
@@ -12,6 +13,7 @@ import java.nio.ByteBuffer;
  * @Date 2022/6/27/027 11:29
  * @Version 1.0
  **/
+@Slf4j
 public class ByteBufferApiTest {
 
     public static void main(String[] args) {
@@ -22,7 +24,26 @@ public class ByteBufferApiTest {
 
         byteBuffer.put(msg.getBytes());
 
-        System.out.println(new String(byteBuffer.array(), CharsetUtil.UTF_8));
+        log.info("{},{}",byteBuffer.position(),byteBuffer.limit());
+
+        byteBuffer.flip();
+
+
+        log.info("{},{}",byteBuffer.position(),byteBuffer.limit());
+
+        log.info("读取{}",byteBuffer.get());
+
+        byteBuffer.mark();
+
+        log.info("读取{}",byteBuffer.get());
+
+        log.info("{},{}",byteBuffer.position(),byteBuffer.limit());
+
+        byteBuffer.reset();
+
+        log.info("{},{}",byteBuffer.position(),byteBuffer.limit());
+
+
 
     }
 }
