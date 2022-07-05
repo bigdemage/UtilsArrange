@@ -34,6 +34,7 @@ public class KimuraServer {
              *  创建启动器
              *  Bootstrap启动器的步骤：
              *  设置eventloopgroup线程组->设置通道类型->设置option参数->设置handler流水线->端口绑定->启动->等待通道关闭->优雅关闭
+             *  client用Bootstrap，server用serverBootstrap
              */
             ServerBootstrap bootstrap=new ServerBootstrap();
             //设置boss和worker线程组
