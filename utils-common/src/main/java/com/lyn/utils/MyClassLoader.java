@@ -1,3 +1,4 @@
+package com.lyn.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -96,20 +97,20 @@ public class MyClassLoader extends ClassLoader{
 //        test(loader3);
   /*
         //系统类加载器和自定义类加载命名空间不同，所以Sample中的属性会取不到
-        Class clazz=loader1.loadClass("Sample");
+        Class clazz=loader1.loadClass("com.lyn.utils.Sample");
         Object object=clazz.newInstance();
-        Sample sample= (Sample) object;
+        com.lyn.utils.Sample sample= (com.lyn.utils.Sample) object;
         System.out.println(sample.v1);*/
 
 /*        //反射方式可以突破类加载器不同命名空间问题
-        Class clazz = loader1.loadClass("Sample");
+        Class clazz = loader1.loadClass("com.lyn.utils.Sample");
         Object object = clazz.newInstance();
         Field field = clazz.getField("v1");
         int v1 = field.getInt(object);
         System.out.println(v1);*/
 
 
-        Class clazz = loader1.loadClass("Sample");
+        Class clazz = loader1.loadClass("com.lyn.utils.Sample");
         System.out.println(clazz.hashCode());
 
         Object object=clazz.newInstance();
@@ -122,7 +123,7 @@ public class MyClassLoader extends ClassLoader{
 
         loader1.setPath("d:\\classloadTest\\serverlib\\");
 
-        clazz=loader1.loadClass("Sample");
+        clazz=loader1.loadClass("com.lyn.utils.Sample");
 
         System.out.println(clazz.hashCode());
 
@@ -132,7 +133,7 @@ public class MyClassLoader extends ClassLoader{
 
     //创建sample对象
     public static void test(ClassLoader loader) throws Exception {
-        Class clazz=loader.loadClass("Sample");
+        Class clazz=loader.loadClass("com.lyn.utils.Sample");
         Object object=clazz.newInstance();
         Sample sample= (Sample) object;
         System.out.println(sample.v1);
