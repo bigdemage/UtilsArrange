@@ -1,11 +1,10 @@
 package com.lyn.codeLearing.IO.NIO;
 
 
+import com.lyn.utils.ByteBufferUtil;
 import io.netty.util.CharsetUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.functors.FalsePredicate;
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
@@ -62,28 +61,72 @@ public class NIOServerTest {
                      */
                     socketChannel.register(selector,SelectionKey.OP_READ, ByteBuffer.allocate(1024));
                 }
-                //服务端没有connetion事件，是客户端的事件，客户端connetion
-                if(selectionKey.isConnectable()){
-
-                }
+                //服务端没有connection事件，是客户端的事件，客户端connection
+                if(selectionKey.isConnectable()){}
                 //读事件
                 if(selectionKey.isReadable()){
+
                     //获取通道然后获取通道里的缓冲区，缓冲区里就是要读取的数据
                     SocketChannel socketChannel= (SocketChannel) selectionKey.channel();
                     //selectKye的附件就是要读取的东西
                     ByteBuffer byteBuffer= (ByteBuffer) selectionKey.attachment();
-                    //通道读取,上面拿下来的byteBuffer最上面register里的byteBuffer对象，里面没有内容，需要用channel把内容读进去
-                    socketChannel.read(byteBuffer);
-                    log.info("来自客户端{}的消息:{}",socketChannel.getRemoteAddress(),new String(byteBuffer.array(), CharsetUtil.UTF_8));
+                    if(socketChannel.read(byteBuffer)>0){
+                        //处理半包粘包
+                        spilt(byteBuffer);
+                        //长度不够扩容
+                        if(byteBuffer.position()==byteBuffer.limit()){
+                            ByteBuffer newByteBuffer=ByteBuffer.allocate(byteBuffer.capacity()*2);
+                            byteBuffer.flip();
+                            newByteBuffer.put(byteBuffer);
+                            //新建的byteBuffer作为附件
+                            selectionKey.attach(newByteBuffer);
+                        }
+                        //通道读取,上面拿下来的byteBuffer最上面register里的byteBuffer对象，里面没有内容，需要用channel把内容读进去
+                        log.info("来自客户端{}的消息:{}",socketChannel.getRemoteAddress(),new String(byteBuffer.array(), CharsetUtil.UTF_8));
+                    }else{
+
+                        //咩有数据则关闭读取
+                        selectionKey.cancel();
+                        socketChannel.close();
+                    }
                 }
                 //写事件
                 if(selectionKey.isWritable()){
+                    SocketChannel channel= (SocketChannel) selectionKey.channel();
+                    ByteBuffer buffer= (ByteBuffer) selectionKey.attachment();
+                    int write =channel.write(buffer);
+                    log.info("写入数量:{}",write);
+                    if(!buffer.hasRemaining()){
+                        selectionKey.attach(null);
+                        selectionKey.interestOps(0);
+                    }
 
                 }
-                //事件集合中删除已处理的事件
+                //事件集合中删除已处理的事件--处理完一个事件后一定要删除，否则会报错
                 iterator.remove();
             }
         }
 
+    }
+
+    /**
+     * 分割byteBuffer
+     * @param byteBuffer
+     */
+    private static void spilt(ByteBuffer byteBuffer){
+        byteBuffer.flip();
+        for(int i=0 ;i<byteBuffer.limit();i++){
+            //get(index)不会移动position
+            if(byteBuffer.get(i)=='\n'){
+                //新弄缓冲区
+                int length=i+1-byteBuffer.position();
+                ByteBuffer target=ByteBuffer.allocate(length);
+                for(int j=0 ;j<length;j++){
+                    target.put(byteBuffer.get());
+                }
+                ByteBufferUtil.debugAll(target);
+            }
+        }
+        byteBuffer.compact();
     }
 }

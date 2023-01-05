@@ -37,6 +37,5 @@ public class AcceptMethod {
         al.forEach(str->consumer.accept(str));
 
 
-
     }
 }

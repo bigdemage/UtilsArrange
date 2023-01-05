@@ -33,7 +33,7 @@ public class NIOClientTest {
             }
         }
         //连接成功写消息
-        String msg = "砸瓦鲁多欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉";
+        String msg = "砸瓦鲁多欧拉欧拉欧拉欧\n拉欧拉欧拉欧拉\n阿玛拉";
         ByteBuffer byteBuffer=ByteBuffer.wrap(msg.getBytes());
         //数据写入通道
         socketChannel.write(byteBuffer);

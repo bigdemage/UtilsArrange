@@ -23,6 +23,7 @@ public class GroupChatServer {
             this.selector = Selector.open();
             //打开serverSocketChannel
             this.serverSocketChannel = ServerSocketChannel.open();
+
             //绑定地址，端口号
             this.serverSocketChannel.bind(new InetSocketAddress("127.0.0.1", PORT));
             //设置为非阻塞
