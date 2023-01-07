@@ -8,10 +8,12 @@
     <artifactId>util.common</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
     <modules>
         <module>utils-common</module>
         <module>com.simple.springBoot.web</module>
         <module>servlet-container</module>
+        <module>learning-code</module>
     </modules>
 
     <properties>
@@ -50,14 +52,9 @@
             <version>1.9.3</version>
         </dependency>
         <dependency>
-            <groupId>org.jboss.netty</groupId>
-            <artifactId>netty</artifactId>
-            <version>3.2.4.Final</version>
-        </dependency>
-        <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.0.23.Final</version>
+            <version>4.1.20.Final</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -87,8 +84,10 @@
             <artifactId>commons-codec</artifactId>
             <version>1.9</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

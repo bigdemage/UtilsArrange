@@ -1,14 +1,13 @@
 package com.lyn.utils;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.File;
+import java.io.FileWriter;
 import java.util.TreeMap;
 
 public class FileUtils {
 
     public static void main(String[] args) throws Exception {
-        alterShengSiYuanFileName("D:\\BaiduNetdiskDownload\\北京圣思园\\javaSE");
+        alterShengSiYuanFileName("D:\\桌面东西\\综合业务平台对接接口", "d:\\wdnmd.txt");
 
     }
 
@@ -19,19 +18,28 @@ public class FileUtils {
      *
      * @param folder 文件夹路径
      */
-    private static void alterShengSiYuanFileName(String folder) throws Exception {
+    private static void alterShengSiYuanFileName(String folder, String textFile) throws Exception {
         File file = new File(folder);
         File[] fa = file.listFiles();
         TreeMap map = new TreeMap();
+        File deleteFile = new File(textFile);
+        if (deleteFile.exists()) {
+            deleteFile.delete();
+            System.out.println("删除成功");
+        }
+        FileWriter fw = new FileWriter(textFile, true);
         for (File fl : fa) {
             //文件名称
             String fullFileName = fl.getCanonicalPath();
+            System.out.println(fl.getName());
+            fw.write(fl.getName() + "\t\n");
             System.out.println(fullFileName);
-            System.out.println(StringUtils.substringBetween(fullFileName, "]", "("));
-            String newName = StringUtils.substringBetween(fullFileName, "]", "[");
-            if (StringUtils.isNotBlank(newName)) {
-                alterFileName(fullFileName, newName);
-            }
+
+//            System.out.println(StringUtils.substringBetween(fullFileName, "]", "("));
+//            String newName = StringUtils.substringBetween(fullFileName, "]", "[");
+//            if (StringUtils.isNotBlank(newName)) {
+//                alterFileName(fullFileName, newName);
+//            }
 //            String subFileName = StringUtils.substringBetween(fullFileName, "第", "讲");
 //            if(StringUtils.isNotBlank(subFileName)){
 //                try{
@@ -42,6 +50,7 @@ public class FileUtils {
 //                }
 //            }
         }
+        fw.close();
     }
 
 
@@ -75,7 +84,7 @@ public class FileUtils {
      * @param file
      */
     public static void deleteAllFiles(File file) {
-        if ( file.isFile() || file.list().length==0 ) {
+        if (file.isFile() || file.list().length == 0) {
             file.delete();
         } else {
             File[] files = file.listFiles();
