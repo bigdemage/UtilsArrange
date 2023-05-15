@@ -11,7 +11,6 @@
 
     <modules>
         <module>utils-common</module>
-        <module>com.simple.springBoot.web</module>
         <module>servlet-container</module>
         <module>learning-code</module>
     </modules>
