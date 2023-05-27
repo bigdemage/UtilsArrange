@@ -7,23 +7,20 @@ import java.util.TreeMap;
 public class FileUtils {
 
     public static void main(String[] args) throws Exception {
-        alterShengSiYuanFileName("D:\\桌面东西\\综合业务平台对接接口", "d:\\wdnmd.txt");
+        alterShengSiYuanFileName("F:\\十方俱灭\\大鱼人","d:\\wdnmd.txt");
 
     }
 
 
     /**
-     * 遍历圣思源文件
-     * 创建JAVA.SE课程的目录
-     *
      * @param folder 文件夹路径
      */
-    private static void alterShengSiYuanFileName(String folder, String textFile) throws Exception {
+    private static void alterShengSiYuanFileName(String folder,String textFile) throws Exception {
         File file = new File(folder);
         File[] fa = file.listFiles();
         TreeMap map = new TreeMap();
         File deleteFile = new File(textFile);
-        if (deleteFile.exists()) {
+        if(deleteFile.exists()) {
             deleteFile.delete();
             System.out.println("删除成功");
         }
@@ -49,6 +46,7 @@ public class FileUtils {
 //                    map.put(NumberUtil.chineseNumber2Int(subFileName),fullFileName);
 //                }
 //            }
+            fw.write(fl.getName()+"\t\n");
         }
         fw.close();
     }
@@ -60,7 +58,7 @@ public class FileUtils {
      * @param oldName 旧文件全路径 d:/lyn/www.jpg
      * @param newName 新文件名称 lyn.jpg
      */
-    private static void alterFileName(String oldName, String newName) throws Exception {
+    public static void alterFileName(String oldName, String newName) throws Exception {
         File oldFile = new File(oldName);
         if (oldFile.exists()) {
             String fileName = oldFile.getCanonicalPath();
@@ -71,7 +69,6 @@ public class FileUtils {
             //改名
             oldFile.renameTo(new File(preFileName + newName + sufFileName));
         } else {
-
             throw new Exception("文件不存在");
         }
     }

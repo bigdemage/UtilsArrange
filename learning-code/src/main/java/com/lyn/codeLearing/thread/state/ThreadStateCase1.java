@@ -13,35 +13,42 @@ public class ThreadStateCase1 {
 
     public static void main(String[] args) throws InterruptedException {
         Thread  thread =new Thread(()->{
-            try {
-                TimeUnit.SECONDS.sleep(2);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             synchronized (obj){
                 try {
+                    TimeUnit.MILLISECONDS.sleep(100);
                     obj.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
+            System.out.println("o ho:::" +Thread.currentThread().getState());
         });
 
         System.out.println(thread.getState());
         thread.start();
         System.out.println(thread.getState());
-        TimeUnit.SECONDS.sleep(3);
+        TimeUnit.MILLISECONDS.sleep(150);
         System.out.println(thread.getState());
-        reLock();
+
+//        new Thread(()->{
+//            synchronized (obj){
+//                obj.notify();
+//            }
+//        }).start();
+        relock();
+        TimeUnit.MILLISECONDS.sleep(10);
+
         System.out.println(thread.getState());
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.MILLISECONDS.sleep(100);
         System.out.println(thread.getState());
 
     }
-    static void reLock(){
+
+    private static void relock() {
         synchronized (obj){
             obj.notify();
         }
     }
+
 
 }
